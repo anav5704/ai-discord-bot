@@ -1,6 +1,6 @@
-const { examples } = require("./promptExamples")
+import { examples } from "./promptExamples.js"
 
-const promptBatman = async (prompt, PALM_AI) => {
+export const promptBatman = async (prompt, PALM_AI) => {
     const result = await PALM_AI.generateMessage({
         model: "models/chat-bison-001",
         temperature: 0.7,
@@ -11,8 +11,6 @@ const promptBatman = async (prompt, PALM_AI) => {
             messages: [{ content: prompt }],
         },
     })
-    
+
     return result[0].candidates[0].content
 }
-
-module.exports = { promptBatman }
