@@ -2,28 +2,41 @@
 
 ![hero page](https://github.com/anav5704/ai-discord-bot/blob/main/docs/batman.png)
 
-This is a simple discord bot made using Google's Palm 2. The setup was easy and straightforward. This bot reads messages and replies to them as if it is Batman. If you want to talk to him, feel free to join the [Gotham City](https://discord.gg/K9rMzPudgS) discord server.
+A Discord bot powered by Google Gemini that replies to messages in character as Batman. If you want to talk to him, feel free to join the [Gotham City](https://discord.gg/K9rMzPudgS) Discord server.
 
 ## Technologies Used
-- Node JS
-- Discord JS
-- Palm 2 API
+- Node.js (ES modules, Node 20+)
+- Discord.js
+- Google Gemini API (`gemini-2.5-flash-lite`)
 
 ## Getting Started
 
-First, fork and clone the repo, and install all the required dependencies by running ```npm install```. Then make a ```.env``` file in the root of your project and add the following variables:
+First, fork and clone the repo, and install all the required dependencies by running:
+
+```sh
+npm install
+```
+
+Then create a `.env` file in the root of your project and add the following variables:
 
 ```
-PALM_AI_API_KEY
+GEMINI_API_KEY
 DISCORD_TOKEN
 GIPHY_API_KEY
 ```
 
-Finally Start the app by running ```node index.js``` or ```node .```
+Finally start the app:
 
-## Learning Resources 
+```sh
+node index.js
+```
 
-- [Creating an AI Discord bot](https://www.youtube.com/watch?v=VxD7Lt1eV2U) 
+## Docker (Self-Hosting)
+
+See [docs/DEPLOY.md](docs/DEPLOY.md) for Docker Compose setup.
+
+## Learning Resources
+
+- [Creating an AI Discord bot](https://www.youtube.com/watch?v=VxD7Lt1eV2U)
 - [How to build a Discord bot](https://www.youtube.com/watch?v=Oy5HGvrxM4o)
-- [Discord JS docs](https://discord.js.org/)
-
+- [Discord.js docs](https://discord.js.org/)
