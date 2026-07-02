@@ -9,34 +9,61 @@ A Discord bot powered by Google Gemini that replies to messages in character as 
 - Discord.js
 - Google Gemini API (`gemini-2.5-flash-lite`)
 
-## Getting Started
+## Quick Start (Docker)
 
-First, fork and clone the repo, and install all the required dependencies by running:
+A prebuilt image is published to GitHub Container Registry on every push to `main`. No build required.
+
+1. Create a `.env` file:
+
+    ```ini
+    DISCORD_TOKEN=your_discord_bot_token
+    GEMINI_API_KEY=your_gemini_api_key
+    GIPHY_API_KEY=your_giphy_api_key
+    ```
+
+2. Download [`docker-compose.example.yml`](docker-compose.example.yml) as `docker-compose.yml`, then run:
+
+    ```sh
+    docker compose up -d
+    ```
+
+3. Tail logs:
+
+    ```sh
+    docker compose logs -f
+    ```
+
+To update to the latest image:
+
+```sh
+docker compose pull && docker compose up -d
+```
+
+## Run From Source
 
 ```sh
 npm install
-```
-
-Then create a `.env` file in the root of your project and add the following variables:
-
-```
-GEMINI_API_KEY
-DISCORD_TOKEN
-GIPHY_API_KEY
-```
-
-Finally start the app:
-
-```sh
 node index.js
 ```
 
-## Docker (Self-Hosting)
+## Build Your Own Image
 
-See [docs/DEPLOY.md](docs/DEPLOY.md) for Docker Compose setup.
+```sh
+docker build -t batman-bot .
+docker run -d --env-file .env --restart unless-stopped batman-bot
+```
+
+## Development (self-hosting on a homelab)
+
+See [docs/DEPLOY.md](docs/DEPLOY.md) for the in-repo deployment guide (when running from source or building locally).
+
+## Slash Commands
+
+- `/batgif` — fetch a random Batman GIF
+- `/batquote` — drop a Batman quote
+- `@Batman` — chat with Batman in any channel
 
 ## Learning Resources
 
-- [Creating an AI Discord bot](https://www.youtube.com/watch?v=VxD7Lt1eV2U)
-- [How to build a Discord bot](https://www.youtube.com/watch?v=Oy5HGvrxM4o)
 - [Discord.js docs](https://discord.js.org/)
+- [Google Gemini API](https://ai.google.dev/gemini-api/docs)

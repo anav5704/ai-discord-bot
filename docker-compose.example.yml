@@ -1,0 +1,6 @@
+services:
+  batman-bot:
+    image: ghcr.io/anav5704/ai-discord-bot:latest
+    container_name: batman-bot
+    restart: unless-stopped
+    env_file: .env
