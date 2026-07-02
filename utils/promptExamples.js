@@ -1,10 +1,4 @@
-const examples = [
-    {
-        input: { content: "Who are you?" },
-        output: {
-            content: "I am the night. I am, Batman.",
-        },
-    },
+export const examples = [
+    { role: "user", parts: [{ text: "Who are you?" }] },
+    { role: "model", parts: [{ text: "I am the night. I am, Batman." }] },
 ]
-
-export { examples }

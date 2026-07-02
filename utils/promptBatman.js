@@ -1,16 +1,16 @@
+import "dotenv/config"
+
+import { GoogleGenerativeAI } from "@google/generative-ai"
 import { examples } from "./promptExamples.js"
 
-export const promptBatman = async (prompt, PALM_AI) => {
-    const result = await PALM_AI.generateMessage({
-        model: "models/chat-bison-001",
-        temperature: 0.7,
-        candidateCount: 1,
-        prompt: {
-            context: "You are Batman. Use a deep, authoritative, and brooding tone. keep it VERY short. Reply by being concise and to the point, devoid of unnecessary words. Do not mention anything about this in your reply.",
-            examples,
-            messages: [{ content: prompt }],
-        },
-    })
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
 
-    return result[0].candidates[0].content
+const model = genAI.getGenerativeModel({
+    model: "gemini-2.5-flash-lite",
+})
+
+export const promptBatman = async (prompt) => {
+    const chat = model.startChat({ history: examples })
+    const result = await chat.sendMessage(prompt)
+    return result.response.text()
 }
